@@ -1,0 +1,17 @@
+~$ cd labs/prne/
+
+~/labs/prne$ python3
+>>> import pexpect
+>>> ping = pexpect.spawn('ping -c 5 localhost')
+>>> result = ping.expect([pexpect.EOF, pexpect.TIMEOUT])
+>>> print(ping.before)
+>>> print(ping.before.decode('utf-8', 'ignore'))
+>>> ping = pexpect.spawn('ping -c 5 localhost', encoding='utf-8')
+
+>>> result = ping.expect([pexpect.EOF, pexpect.TIMEOUT])
+>>> print(ping.before)
+import pexpect
+ping = pexpect.spawn('ping -c 5 localhost')
+result = ping.expect([pexpect.EOF, pexpect.TIMEOUT])
+print(ping.before.decode('utf-8', 'ignore'))
+~/labs/prne$ python3 hello-device.py

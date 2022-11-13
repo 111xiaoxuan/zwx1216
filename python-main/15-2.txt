@@ -1,0 +1,33 @@
+# Function to read device information from file
+def read_device_info(devices_file):
+ # Read in the devices from the file
+ file = open(devices_file, 'r')
+ for line in file:
+ # Get device info into list
+ device_info_list = line.strip().split(',')
+ devices_list.append(device_info_list)
+ # Close the file
+ file.close()
+# Function to go through devices displaying them in table
+def print_device_info(list_of_devices):
+ print('')
+ print('Name OS-type IP address Software ')
+ print('------ ------- ------------------ ------------------')
+ # Go through the list of devices, displaying values in nice format
+ for device in list_of_devices:
+ print('{0:8} {1:8} {2:20} {3:20}'.format(device[0], device[1],
+ device[2], device[3]))
+ # Display a blank line to make easier to read
+ print(''）
+# Main:
+# Create the outer list for all devices
+devices_list = []
+# Display a blank line to make easier to read
+print('')
+# Prompt user to enter the name of the file
+# containing the device information
+devices_file = input('Enter devices filename: ')
+# Read device info
+read_device_info(devices_file)
+# Display information
+print_device_info(devices_list)

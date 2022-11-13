@@ -1,0 +1,31 @@
+# Import required modules/packages/library
+from util import read_devices_info
+from util import print_device_info
+from util import write_devices_info
+# Read JSON info for all devices
+devices_list = read_devices_info('devices-14.json')
+# Connect to device, show interface summary, display
+for device in devices_list:
+ print('==== Device ===============================================')
+ # Connect to this specific device
+ device.connect()
+ # Get interface info for specific device
+ device.get_interfaces()
+ # Print device details for this device
+ print_device_info(device)
+# Write JSON entry for all devices
+write_devices_info('devices-14-out.json', devices_list)
+# Do it all again, reading from the output file, to prove all correct
+print('-----------------------------------------------------------')
+print('---------- Reading from the output file, to test ----------')
+# Read JSON info for all devices
+devices_list = read_devices_info('devices-14.json')
+# Connect to device, show interface, display
+for device in devices_list:
+ print('==== Device ===============================================')
+ # Connect to this specific device
+ device.connect()
+ # Get interface info for specific device
+ device.get_interfaces()
+ # Print device details for this device
+ print_device_info(device)
